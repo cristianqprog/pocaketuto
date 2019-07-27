@@ -37,20 +37,43 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
    
 
 
-  <!-- Image and text -->
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" >
-    <ul class= "nav-item">
-                 <li class="btn btn-default">
-                  <?= $this->Html->link('salir', ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-lg btn-danger btn-block']) ?> 
-                </li>
-    </ul>
+
+
+  
     
-  </a>
-</nav>
 
 
+  <!-- Page Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">CakePHP 3.6</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                   <?=   $this->Html->link('Listar Usuarios', ['controller' => 'Users', 'action' => 'index'],['class' => 'btn btn-outline-secondary']);?>
+                   <br>
+                 </li>
+                
+                <li class="nav-item active">
+                   <?=   $this->Html->link('Agregar Usuarios', ['controller' => 'Users', 'action' => 'add'],['class' => 'btn btn-outline-secondary']);?>
+
+
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <?php
+                   
+                   echo  $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-danger']);
+                    echo '&nbsp';
+                    echo  $this->Html->link('Loguearse', ['controller' => 'Users', 'action' => 'login'],['class' => 'btn btn-success']);
+                ?>
+            </div>
+        </div>
+    </nav>
+    <br>
 
     <?= $this->Flash->render() ?>
     <div class="container">
