@@ -17,6 +17,36 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+
+    public function login()
+    {
+        if($this->request->is('post'))
+        {
+            $user = $this->Auth->identify();
+            if($user)
+            {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            else
+            {
+                $this->Flash->error('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
+            }
+        }
+     }
+     public function home()
+    {
+       
+
+        $this->render();
+    }
+     public function logout()
+    {
+       
+
+        $this->render($this->Auth->logout());
+    }
+
     public function index()
     {
         $users = $this->paginate($this->Users);
