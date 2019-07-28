@@ -44,7 +44,7 @@ class UsersController extends AppController
     {
        
 
-        $this->render($this->Auth->logout());
+      return  $this->redirect($this->Auth->logout());
     }
 
     public function index()

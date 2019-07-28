@@ -67,8 +67,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <?php
                    
                    echo  $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-danger']);
-                    echo '&nbsp';
-                    echo  $this->Html->link('Loguearse', ['controller' => 'Users', 'action' => 'login'],['class' => 'btn btn-success']);
+                  
                 ?>
             </div>
         </div>

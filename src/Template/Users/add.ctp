@@ -17,7 +17,7 @@
             echo $this->Form->control('active');
         ?>
         </fieldset>
-        <?= $this->Form->button('Crear') ?>
+        <?= $this->Form->button('Crear',['class' => 'btn btn-outline-dark']) ?>
         <?= $this->Form->end() ?>
     </div>
 </div> 
