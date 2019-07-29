@@ -13,8 +13,8 @@ class CreateAdminSeedMigration extends AbstractMigration
             'last_name' => 'Mollericona',
             'email' => 'ed@edsonmm.com',
             'password' => function () {
-                $hasher = new DefaultPasswordHasher();
-                return  $hasher->hash('secret');
+               
+                return  ('secret');
             },
             'role' => 'admin',
             'active' => 1,

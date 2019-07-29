@@ -67,20 +67,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </li>
       </ul>
   <?php endif; ?>
-<div class="nav navbar-nav navbar-right">
+
             <ul class="nav navbar-nav navbar-right">
               <li>
                    <?= $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-outline-danger']) ?>
               </li>
             </ul>
-    </div>        
+            
             
     <?php endif; ?>       
         </div>
-    </div>
+    </div >
     </nav>
-
-    <?= $this->Flash->render() ?>
+<div class="container">
+  <?= $this->Flash->render() ?>
+</div>
+    
     <div class="container">
         <?= $this->fetch('content') ?>
     </div>

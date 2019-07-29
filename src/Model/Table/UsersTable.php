@@ -61,34 +61,34 @@ class UsersTable extends Table
             ->scalar('first_name')
             ->maxLength('first_name', 100)
             ->requirePresence('first_name', 'create')
-            ->notEmptyString('first_name');
+            ->notEmptyString('first_name','Rellene este campo');
 
         $validator
             ->scalar('last_name')
             ->maxLength('last_name', 100)
             ->requirePresence('last_name', 'create')
-            ->notEmptyString('last_name');
+            ->notEmptyString('last_name', 'Rellene este campo');
 
         $validator
-            ->email('email')
+            ->email('email',['message'=>'Ingrese Correo Valido'])
             ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->notEmptyString('email','Rellene este campo');
 
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password', 'Rellene este campo');
 
         $validator
             ->scalar('role')
             ->requirePresence('role', 'create')
-            ->notEmptyString('role');
+            ->notEmptyString('role', 'Rellene este campo');
 
         $validator
             ->boolean('active')
             ->requirePresence('active', 'create')
-            ->notEmptyString('active');
+            ->notEmptyString('active', 'Rellene este campo');
 
         return $validator;
     }
@@ -102,7 +102,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['email'], 'Ya Existe Este Correo.'));
 
         return $rules;
     }
