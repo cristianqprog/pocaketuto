@@ -13,8 +13,7 @@
             echo $this->Form->control('last_name',['label'=>'Apellido']);
             echo $this->Form->control('email',['label'=>'Correo']);
             echo $this->Form->control('password',['label'=>'Contraseña']);
-            echo $this->Form->control('role', ['options'=>['admin'=>'Administrator','user'=>'User'],'label'=>'Rol']);
-            echo $this->Form->control('active');
+           
         ?>
         </fieldset>
         <?= $this->Form->button('Crear',['class' => 'btn btn-outline-dark']) ?>

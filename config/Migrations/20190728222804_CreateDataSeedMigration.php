@@ -4,6 +4,13 @@ use Cake\Auth\DefaultPasswordHasher;
 
 class CreateDataSeedMigration extends AbstractMigration
 {
+    /**
+     * Change Method.
+     *
+     * More information on this method is available here:
+     * http://docs.phinx.org/en/latest/migrations.html#the-change-method
+     * @return void
+     */
     public function up()
     {
         $faker = \Faker\Factory::create();
@@ -19,7 +26,8 @@ class CreateDataSeedMigration extends AbstractMigration
                 return $faker->safeEmail();
             },
             'password' => function () {
-                return 'secret';
+                $hasher = new DefaultPasswordHasher();
+                return  $hasher->hash('secret');
             },
             'role' => 'user',
             'active' => function() {
@@ -34,5 +42,5 @@ class CreateDataSeedMigration extends AbstractMigration
         ]);
         $populator->execute();
     }
+    }
 
-}
