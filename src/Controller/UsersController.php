@@ -50,6 +50,11 @@ class UsersController extends AppController
                 $this->Flash->error('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
             }
         }
+        /**si el usuario esta Auth q me redireccione a mi home, para que no vuelva a login */
+        if ($this->Auth->user())
+        {
+            return $this->redirect(['controller'=>'Users','action'=>'home']);
+        }
      }
      public function home()
     {

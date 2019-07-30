@@ -120,4 +120,12 @@ class UsersTable extends Table
         $user = $this->get($id);
         return $user->password;
     }
+/**metdo para no eliminar admin, actua antes de eliminar*/
+     public function beforeDelete($event,$entity,$options){
+        if ($entity->role == 'admin') {
+            return false;
+            $this->redirect(['action' => 'index']);
+        }
+        return true;
+     }
 }
