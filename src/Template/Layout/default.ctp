@@ -45,41 +45,51 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
   <!-- Page Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <div class="container">
+      <div class="container">
         <div class="navbar-header">
            
             <?= $this->Html->link('POCAKE', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
            
         </div>
-<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <?php if(isset($current_user)): ?> 
-     <?php if($current_user['role'] == 'admin'): ?>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <?php if(isset($current_user)): ?> 
+
+              <?php if($current_user['role'] == 'admin'): ?>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
                    <?=   $this->Html->link('Listar Usuarios', ['controller' => 'Users', 'action' => 'index'],['class' => 'btn btn-outline-secondary']);?>
                    <br>
+                   
                 </li>
                 
                 <li class="nav-item active">
                    <?=   $this->Html->link('Agregar Usuarios', ['controller' => 'Users', 'action' => 'add'],['class' => 'btn btn-outline-secondary']);?>
-
-
                 </li>
-      </ul>
-  <?php endif; ?>
+        </ul>
+        <?php endif; ?>
+         <ul class="nav navbar-nav navbar-left">
+                     <li>
+                        <?= $this->Html->link('Mi lista', ['controller' => 'bookmarks', 'action' => 'index'],['class' => 'btn btn-outline-secondary']) ?>
+                        <br>
 
-            <ul class="nav navbar-nav navbar-right">
+                    </li>
+                </ul>
+       </div>  
+              
+                
+            <ul class="nav navbar-nav navbar-left">
               <li>
                    <?= $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout'],['class' => 'btn btn-outline-danger']) ?>
               </li>
             </ul>
             
+           
             
-    <?php endif; ?>       
-        </div>
+              <?php endif; ?>       
+       
     </div >
-    </nav>
-<div class="container">
+  </nav>
+<div class="contain">
   <?= $this->Flash->render() ?>
 </div>
     

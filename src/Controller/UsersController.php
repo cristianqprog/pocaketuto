@@ -22,6 +22,8 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         $this->Auth->allow(['add']);
     }
+
+    /*autorizacion de usuarios*/
     public function isAuthorized($user)
     {
         if(isset($user['role']) and $user['role'] === 'user')
