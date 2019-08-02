@@ -22,9 +22,19 @@ class BookmarksController extends AppController
     {
         if(isset($user['role']) and $user['role'] === 'user')
         {
-            if(in_array($this->request->action, ['add', 'index', 'edit','delete']))
+            if(in_array($this->request->action, ['add', 'index']))
             {
                 return true;
+            }
+
+             if (in_array($this->request->action, ['edit', 'delete']))
+            {
+                $id = $this->request->params['pass'][0];
+                $bookmark = $this->Bookmarks->get($id);
+                if ($bookmark->user_id == $user['id'])
+                {
+                    return true;
+                }
             }
         }
         return parent::isAuthorized($user);
@@ -92,9 +102,10 @@ class BookmarksController extends AppController
     public function edit($id = null)
     {
         $bookmark = $this->Bookmarks->get($id, [
-            'contain' => []
+           
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $bookmark->user_id = $this->Auth->user('id');/*guardo bookmark con el usuario autentificado*/
             $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->getData());
             if ($this->Bookmarks->save($bookmark)) {
                 $this->Flash->success(__('The bookmark has been saved.'));
@@ -103,8 +114,8 @@ class BookmarksController extends AppController
             }
             $this->Flash->error(__('The bookmark could not be saved. Please, try again.'));
         }
-        $users = $this->Bookmarks->Users->find('list', ['limit' => 200]);
-        $this->set(compact('bookmark', 'users'));
+        
+        $this->set(compact('bookmark'));
     }
 
     /**

@@ -4,10 +4,12 @@
             <h2>Usuarios</h2>
         </div>
         <div class="table-responsive">
+        
             <table class="table table-striped table-hover">
+               
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+                
                 <th><?= $this->Paginator->sort('first_name', ['Nombre']) ?></th>
                 <th><?= $this->Paginator->sort('last_name', ['Apellidos']) ?></th>
                 <th><?= $this->Paginator->sort('email', ['Correo electrónico']) ?></th>
@@ -17,7 +19,7 @@
             <tbody>
             <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $this->Number->format($user->id) ?></td>
+               
                 <td><?= h($user->first_name) ?></td>
                 <td><?= h($user->last_name) ?></td>
                 <td><?= h($user->email) ?></td>

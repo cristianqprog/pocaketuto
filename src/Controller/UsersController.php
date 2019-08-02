@@ -17,6 +17,7 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
+
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -49,7 +50,8 @@ class UsersController extends AppController
             }
             else
             {
-                $this->Flash->error('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
+
+                $this->Flash->err('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
             }
         }
         /**si el usuario esta Auth q me redireccione a mi home, para que no vuelva a login */
@@ -73,6 +75,7 @@ class UsersController extends AppController
 
     public function index()
     {
+       
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -103,18 +106,18 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $this->Flash->error(('Unable to add your user'));
+        
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             $user->role ='user';
             $user->active =1;
             if ($this->Users->save($user)) {
-                $this->Flash->success(('El usuario ha sido guardado'));
+                $this->Flash->ok(('El usuario ha sido guardado'));
 
                 return $this->redirect(['action' => 'login']);
             }
-            $this->Flash->error(('El Usuario no se guardo.'));
+            $this->Flash->err(('El Usuario no se guardo.Intente nuevamente'));
         }
         $this->set(compact('user'));
     }
@@ -134,11 +137,11 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('El Usuario ha sido actualizado'));
+                $this->Flash->ok(__('El Usuario ha sido actualizado'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('No  se guardo'));
+            $this->Flash->err(__('No se pudo Editar. Intente nuevamente'));
         }
         $this->set(compact('user'));
     }
@@ -155,9 +158,9 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->ok(__('El usuario borro correctamente'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->err(__('El usuario no se borro correctamente. Intenta nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

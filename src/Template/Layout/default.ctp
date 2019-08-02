@@ -89,14 +89,48 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
        
     </div >
   </nav>
-<div class="contain">
-  <?= $this->Flash->render() ?>
-</div>
-    
+
+
     <div class="container">
+        <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
     </div>
-    <footer>
-    </footer>
+
+
+<!-- Footer -->
+<style type="text/css">
+ html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+footer {
+   position:absolute;
+   left:0px;
+   bottom:0px;
+   height:54px;
+   width:100%;
+   background:#004085;
+}
+
+div a {
+  color: black;
+}
+</style>
+
+<footer  >
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Enlaces Favoritos:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> Final Programación 3</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
 </body>
 </html>
