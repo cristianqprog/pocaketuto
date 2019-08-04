@@ -80,6 +80,7 @@ class UsersController extends AppController
     {
        
         $users = $this->paginate($this->Users);
+        
 
         $this->set(compact('users'));
     }
@@ -95,12 +96,12 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, 
+        $user = $this->Users->get($id, /*obtengo mi id de la tabla users*/
                 [
             'contain' => ['Bookmarks']
         ]);
 
-        $this->set('user', $user);
+        $this->set('user', $user);/*mandamos los datos del usuario*/
     }
 
     /**
@@ -135,7 +136,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, [
+        $user = $this->Users->get($id, [/*recuperar el usuario*/
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {

@@ -100,6 +100,7 @@ class UsersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
+    /*indica que el email se unico*/
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email'], 'Ya Existe Este Correo.'));
@@ -108,7 +109,7 @@ class UsersTable extends Table
     }
 
     public function findAuth(\Cake\ORM\Query $query, array $options)
-    {//obtengo en bd los datos de los usuarios activados
+    {//obtengo en bd los datos de los usuarios activados, solamente van a poder auth los activos
         $query
             ->select(['id', 'first_name', 'last_name', 'email', 'password', 'role'])
             ->where(['Users.active' => 1]);
