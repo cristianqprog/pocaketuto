@@ -17,7 +17,7 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null
      */
-
+/*permisos si no esta autentificado*/
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -29,21 +29,24 @@ class UsersController extends AppController
     {
         if(isset($user['role']) and $user['role'] === 'user')
         {
+               /*si el usuario tiene permiso a estas acciones*/
             if(in_array($this->request->action, ['home', 'view', 'logout']))
             {
                 return true;
             }
         }
-        return parent::isAuthorized($user);
+        return parent::isAuthorized($user);/*mando a metodo appcontroller */
     }
 
 
     public function login()
     {
+       /*verifico la peticion del isuario*/
         if($this->request->is('post'))
         {
+                /*verifica los datos con los que se identifico*/
             $user = $this->Auth->identify();
-            if($user)
+            if($user)/* si existen los datos*/
             {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
@@ -92,7 +95,8 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, [
+        $user = $this->Users->get($id, 
+                [
             'contain' => ['Bookmarks']
         ]);
 

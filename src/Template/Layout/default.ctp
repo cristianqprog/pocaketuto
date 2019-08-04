@@ -38,17 +38,23 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
 
-
+<style type="">
+  *{ Margin:0px Padding:0px;} 
+  .btn  {
+    color: white;
+  }
+  
+</style>
   
     
 
 
   <!-- Page Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
+      <div class="container"  ">
         <div class="navbar-header">
            
-            <?= $this->Html->link('POCAKE', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
+            <?= $this->Html->link('App Enlaces Favoritos', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
            
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -116,16 +122,19 @@ footer {
    background:#004085;
 }
 
-div a {
-  color: black;
+.enlaces {
+  color: white;
+}
+a:hover {
+  color: #000000;
 }
 </style>
 
 <footer  >
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">Enlaces Favoritos:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> Final Programación 3</a>
+  <div style="color: white;" class="footer-copyright text-center py-3">Enlaces Favoritos:
+    <a class="enlaces" href="https://mdbootstrap.com/education/bootstrap/"> Final Programación 3</a>
   </div>
   <!-- Copyright -->
 

@@ -46,29 +46,33 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
           $this->loadComponent('Auth', [
-            'authorize' => ['Controller'],
+            'authorize' => ['Controller'],/*autrizacion de usuarios lo maneja el controller*/
             'authenticate' => [
                 'Form' => [
                     'fields' => [
                         'username' => 'email',
                         'password' => 'password'
                     ],
-                    'finder' => 'auth'
+                    'finder' => 'auth'/*le digo que va a ver un metodo finder llamado auth en usertable*/
                 ]
             ],
-            'loginAction' => [
+            'loginAction' => [/*es una accion donde va a permitir ingresar los datos para loguearse*/
                 'controller' => 'Users',
                 'action' => 'login'
             ],
+           /*si ingreso mal autherr..*/
             'authError' => 'Ingrese sus datos',
+            /*si ingreso bien a home*/
             'loginRedirect' => [
                 'controller' => 'Users',
                 'action' => 'home'
             ],
+            /*cuando cierro Sesion*/
             'logoutRedirect' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ],
+            /* Si no está autorizado, devuélvalos a la página donde estaban en*/
             'unauthorizedRedirect' =>$this->referer()
  ]);
         /*
@@ -77,10 +81,12 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+    /*metodo callback este se activa ante de una funcionalidad, este antes de initialize*/
     public function beforeFilter(Event $event)
     {
         $this->set('current_user', $this->Auth->user());
     }
+   /*metodo para definir autorizacion de usuario*/
      public function isAuthorized($user)
     {
           if(isset($user['role']) and $user['role'] === 'admin')
