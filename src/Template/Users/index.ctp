@@ -4,7 +4,7 @@
             <h2>Usuarios</h2>
         </div>
         <div class="table-responsive">
-        
+        <a href="#top"><p align=center><strong>Ir al cielo</strong></a></p>
             <table class="table table-striped table-hover">
                
             <thead>
@@ -33,7 +33,7 @@
             </tbody>
             </table>
         </div>
-
+<a href="#top"><p align=center><strong>Ir al cielo</strong></a></p>
         <div class="paginator">
             <ul class="pagination">
             <?php
