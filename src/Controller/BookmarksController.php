@@ -59,14 +59,7 @@ class BookmarksController extends AppController
      * @return \Cake\Http\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
-    {
-        $bookmark = $this->Bookmarks->get($id, [
-            'contain' => ['Users']
-        ]);
-
-        $this->set('bookmark', $bookmark);
-    }
+   
 
     /**
      * Add method
@@ -82,11 +75,11 @@ class BookmarksController extends AppController
             $bookmark->user_id = $this->Auth->user('id');/*guardo bookmark con el usuario autentificado*/
             if ($this->Bookmarks->save($bookmark)) 
             {
-                $this->Flash->success(__('The bookmark has been saved.'));
+                $this->Flash->ok(__('Se guardo el Enlace'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The bookmark could not be saved. Please, try again.'));
+            $this->Flash->err(__('El enlace no se guardo'));
         }
         
         $this->set(compact('bookmark'));
@@ -108,11 +101,11 @@ class BookmarksController extends AppController
             $bookmark->user_id = $this->Auth->user('id');/*guardo bookmark con el usuario autentificado*/
             $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->getData());
             if ($this->Bookmarks->save($bookmark)) {
-                $this->Flash->success(__('The bookmark has been saved.'));
+                $this->Flash->ok(__('Editado Exitosamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The bookmark could not be saved. Please, try again.'));
+            $this->Flash->err(__('No se guardo'));
         }
         
         $this->set(compact('bookmark'));
@@ -130,9 +123,9 @@ class BookmarksController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $bookmark = $this->Bookmarks->get($id);
         if ($this->Bookmarks->delete($bookmark)) {
-            $this->Flash->success(__('The bookmark has been deleted.'));
+            $this->Flash->ok(__('Se borro correctamente.'));
         } else {
-            $this->Flash->error(__('The bookmark could not be deleted. Please, try again.'));
+            $this->Flash->err(__('NO Se borro correctamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

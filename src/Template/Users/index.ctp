@@ -4,7 +4,11 @@
             <h2>Usuarios</h2>
         </div>
         <div class="table-responsive">
-        <a href="#top"><p align=center><strong>Ir al cielo</strong></a></p>
+            <h3><?=('Users') ?></h3>
+            <?= $this->Form->create("",['type'=>'get']) ?>
+               <?=  $this->Form->control('keyword'); ?>
+               <button>Search</button>
+            <?= $this->Form->end() ?>
             <table class="table table-striped table-hover">
                
             <thead>
@@ -33,7 +37,7 @@
             </tbody>
             </table>
         </div>
-<a href="#top"><p align=center><strong>Ir al cielo</strong></a></p>
+<a  href="#top"><p align=center><strong>Ir arriba</strong></a></p>
         <div class="paginator">
             <ul class="pagination">
             <?php

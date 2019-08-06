@@ -16,7 +16,13 @@
            
         ?>
         </fieldset>
-        <?= $this->Form->button('Crear',['class' => 'btn btn-outline-primary']) ?>
+        
+           <?= $this->Form->button('Crear',['class' => 'btn btn-outline-primary']) ?> 
+          
+       
+        </div>
+        
+        
         <?= $this->Form->end() ?>
     </div>
 </div> 

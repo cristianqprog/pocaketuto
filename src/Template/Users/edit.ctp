@@ -14,7 +14,7 @@
            
         ?>
         </fieldset>
-        <?= $this->Form->button('Editar',['class' => 'btn btn-outline-dark']) ?>
+        <?= $this->Form->button('Editar',['class' => 'btn btn-outline-primary']) ?>
         <?= $this->Form->end() ?>
     </div>
 </div> 

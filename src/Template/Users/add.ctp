@@ -17,11 +17,7 @@
         ?>
         </fieldset>
         <?= $this->Form->button('Crear',['class' => 'btn btn-outline-primary']) ?>
-        <style type="text/css">
-            .btn {
-                color: black;
-            }
-        </style>
+       
         <?= $this->Form->end() ?>
     </div>
 </div> 

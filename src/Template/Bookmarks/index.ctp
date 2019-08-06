@@ -26,8 +26,18 @@
             </li>
             <?php endforeach ?>
         </ul>
+       <a  href="#top"><p align=center><strong>Ir arriba</strong></a></p>
         <div class="paginator">
             <ul class="pagination">
+            <?php
+              $this->Paginator->templates([
+                'prevActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'prevDisabled' => '<li class="page-item disabled"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'number' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'current' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'nextActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+                'nextDisabled' => '<li class="page-item disabled"><a class="page-link" href="{{url}}">{{text}}</a></li>'
+            ]); ?>
                 <?= $this->Paginator->prev('< Anterior') ?>
                 <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
                 <?= $this->Paginator->next('Siguiente >') ?>

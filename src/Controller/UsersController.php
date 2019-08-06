@@ -57,7 +57,7 @@ class UsersController extends AppController
                 $this->Flash->err('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
             }
         }
-        
+        /**si el usuario esta Auth q me redireccione a mi home, para que no vuelva a login */
         if ($this->Auth->user())
         {
             return $this->redirect(['controller'=>'Users','action'=>'home']);
@@ -75,10 +75,13 @@ class UsersController extends AppController
 
       return  $this->redirect($this->Auth->logout());
     }
-
+   
     public function index()
     {
-       
+        $keyword =$this->request->query('keyword');
+      if (!empty( $keyword)) {
+          $this->paginate = ['conditions'=>['first_name'=>$keyword]];
+      }
         $users = $this->paginate($this->Users);
         
 
@@ -112,8 +115,9 @@ class UsersController extends AppController
     public function add()
     {
         
-        $user = $this->Users->newEntity();
+        $user = $this->Users->newEntity();/*creo una nueva entidad*/
         if ($this->request->is('post')) {
+                /*valida datos*/
             $user = $this->Users->patchEntity($user, $this->request->getData());
             $user->role ='user';
             $user->active =1;
@@ -134,6 +138,7 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+   /*setpassword metodo contraseña*/
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [/*recuperar el usuario*/

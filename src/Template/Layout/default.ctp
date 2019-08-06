@@ -40,10 +40,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 <style type="">
   *{ Margin:0px Padding:0px;} 
-  .btn  {
+  .nav-item  {
     color: white;
+
   }
-  
+
 </style>
   
     
@@ -63,19 +64,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
               <?php if($current_user['role'] == 'admin'): ?>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                   <?=   $this->Html->link('Listar Usuarios', ['controller' => 'Users', 'action' => 'index'],['class' => 'btn btn-outline-secondary']);?>
+                   <?=   $this->Html->link('Listar Usuarios', ['controller' => 'Users', 'action' => 'index'],['class' => 'btn btn-outline-info']);?>
                    <br>
                    
                 </li>
                 
                 <li class="nav-item active">
-                   <?=   $this->Html->link('Agregar Usuarios', ['controller' => 'Users', 'action' => 'add'],['class' => 'btn btn-outline-secondary']);?>
+                   <?=   $this->Html->link('Agregar Usuarios', ['controller' => 'Users', 'action' => 'add'],['class' => 'btn btn-outline-info']);?>
                 </li>
         </ul>
         <?php endif; ?>
          <ul class="nav navbar-nav navbar-left">
                      <li>
-                        <?= $this->Html->link('Mi lista', ['controller' => 'bookmarks', 'action' => 'index'],['class' => 'btn btn-outline-secondary']) ?>
+                        <?= $this->Html->link('Mi lista', ['controller' => 'bookmarks', 'action' => 'index'],['class' => 'btn btn-outline-info']) ?>
                         <br>
 
                     </li>
@@ -119,22 +120,17 @@ footer {
    bottom:0px;
    height:54px;
    width:100%;
-   background:#004085;
+   background:#aace9e;
 }
 
-.enlaces {
-  color: white;
-}
-a:hover {
-  color: #000000;
-}
+
 </style>
 
 <footer  >
 
   <!-- Copyright -->
-  <div style="color: white;" class="footer-copyright text-center py-3">Enlaces Favoritos:
-    <a class="enlaces" href="https://mdbootstrap.com/education/bootstrap/"> Final Programación 3</a>
+  <div  class="footer-copyright text-center py-3">Enlaces Favoritos:
+    <a  href="https://mdbootstrap.com/education/bootstrap/"> Final Programación 3</a>
   </div>
   <!-- Copyright -->
 
