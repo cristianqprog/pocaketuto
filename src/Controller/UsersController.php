@@ -75,17 +75,35 @@ class UsersController extends AppController
 
       return  $this->redirect($this->Auth->logout());
     }
-   
+
     public function index()
     {
-        $keyword =$this->request->query('keyword');
-      if (!empty( $keyword)) {
-          $this->paginate = ['conditions'=>['first_name'=>$keyword]];
-      }
+        $keyword =$this->request->query('keyword' );
+
+    // $users = $this->Users->findAllByFirst_name($keyword);
+    
+         // $this->paginate = ['conditions'=>['first_name'=>$keyword]];
+        
+     $users = $this->Users->findByFirst_name($keyword);
         $users = $this->paginate($this->Users);
         
-
         $this->set(compact('users'));
+    }
+
+    public function buscar( )
+    {
+      
+          $keyword =$this->request->query('keyword');
+          $users = $this->Users->findAllByFirst_name($keyword);
+    //       array(
+     //     'fields'=> array(
+      //    'first_name' ,
+     //     'last_name' 
+   //   ),
+   //     'conditions' => array('first_name =' => $keyword), 
+   //  )
+  //  );
+        $this->set(compact('users')); 
     }
 
 

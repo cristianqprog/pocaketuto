@@ -4,10 +4,21 @@
             <h2>Usuarios</h2>
         </div>
         <div class="table-responsive">
-           <?= $this->Html->link('Buscar', ['controller' => 'Users', 'action'=>'buscar'],[ 'class'=>' btn btn-primary fas fa-plus']) ?>
-            
-            <table class="table table-striped table-hover">
+         
 
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+                <?= $this->Form->create("",['type'=>'get']) ?>
+                 <?php
+                    echo $this->Form->control('keyword', [ 'class'=>'form-control mr-sm-2', 'placeholder'=>"Search"]);
+                  ?>
+                  <?= $this->Form->button('Crear',['class' => 'btn btn-outline-success my-2 my-sm-0']) ?>
+                   <?= $this->Form->end() ?>
+               
+                
+              </form>
+            </nav>
+            <table class="table table-striped table-hover">
                
             <thead>
             <tr>
@@ -35,7 +46,7 @@
             </tbody>
             </table>
         </div>
-<a  href="#top"><p align=center><strong>Ir arriba</strong></a></p>
+
         <div class="paginator">
             <ul class="pagination">
             <?php
@@ -51,7 +62,7 @@
                 <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
                 <?= $this->Paginator->next('Siguiente >') ?>
             </ul>
-            <p><?= $this->Paginator->counter() ?></p>
+            
         </div>
 
 
