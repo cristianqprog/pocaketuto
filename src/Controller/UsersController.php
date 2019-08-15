@@ -41,21 +41,32 @@ class UsersController extends AppController
 
     public function login()
     {
+          
+
+
        /*verifico la peticion del isuario*/
         if($this->request->is('post'))
         {
-                /*verifica los datos con los que se identifico*/
+             if ($this->Recaptcha->verify()) { 
+                 /*verifica los datos con los que se identifico*/
             $user = $this->Auth->identify();
             if($user)/* si existen los datos*/
             {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
+
             }
             else
             {
 
                 $this->Flash->err('Datos son invalidos, por favor intente nuevamente', ['key' => 'auth']);
             }
+            } else {
+            // You can debug developers errors with
+            // debug($this->Recaptcha->errors());
+            $this->Flash->err(__('Please check your Recaptcha Box.'));
+        }
+               
         }
         /**si el usuario esta Auth q me redireccione a mi home, para que no vuelva a login */
         if ($this->Auth->user())

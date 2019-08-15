@@ -40,11 +40,16 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+        if ($this->request->getParam('action') === 'login') {
+        $this->loadComponent('Recaptcha.Recaptcha');
+    }
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+     
+
           $this->loadComponent('Auth', [
             'authorize' => ['Controller'],/*autrizacion de usuarios lo maneja el controller*/
             'authenticate' => [

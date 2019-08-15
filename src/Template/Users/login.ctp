@@ -15,6 +15,8 @@
                 <div class="form-group">
                     <?= $this->Form->input('password', ['class' => 'form-control input-lg', 'placeholder' => 'Contraseña', 'label' => false, 'required']) ?>
                 </div>
+              <?= $this->Recaptcha->display() ?>
+                
                 <hr class="colorgraph">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
